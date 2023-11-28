@@ -22,8 +22,8 @@ public class Comensal extends Usuario {
     private Boolean activeComensal;
 
     //constructor
-    public Comensal(String nombre, String correo, Date fecha, String contrasena){
-        super(nombre,correo,fecha,contrasena);
+    public Comensal(String nombre, String correo, String contrasena){
+        super(nombre,correo,contrasena);
         this.numeroPedidos = 0;
         this.metodosDePago = new ArrayList<MetodoDePago>();
         this.pedidos = new ArrayList<Pedido>();

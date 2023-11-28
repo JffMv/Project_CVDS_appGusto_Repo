@@ -19,7 +19,7 @@ public class Restaurante {
     private Administrador admin;
     @OneToMany(mappedBy = "ID_restaurante")
     private ArrayList<Platillo> platillos;
-    @OneToOne(mappedBy = "restauranteDelGerente")
+    @OneToOne(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
     private Gerente gerente;
 
 

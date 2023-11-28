@@ -24,66 +24,13 @@ public class AdministradorService {
     public AdministradorService( AdministradorRepository administradorRepository) {
         this.administradorRepository = administradorRepository;
     }
-    public void createAdmin(Usuario usuario){
-        Administrador admin = (Administrador)usuario;
-        administradorRepository.save(admin);
-    }
-
+    public Administrador addAdministrador(Administrador administrador){return administradorRepository.save(administrador);}
     public List<Administrador> getAdministradores(){
         return administradorRepository.findAll();
     }
-
     public Optional<Administrador> getAdministradorById(Long id){
         return administradorRepository.findById(id);
     }
-    public  Administrador saveAdministrador(Administrador e){
-        return administradorRepository.save(e);
-    }
-    public boolean deleteAdministrador(Long id){
-        try{
-            Optional<Administrador> administrador= this.getAdministradorById(id);
-            administradorRepository.delete(administrador.get());
-            return true;
-        }catch (Exception e){
-            return false;
-        }
-    }
-
-    public boolean desactiveAdministrador(long id){
-        try{
-            Optional<Administrador> administrador= this.getAdministradorById(id);
-            administrador.get().setActivoAdministrador(false);
-            return true;
-        }catch (Exception e){
-            return false;
-        }
-
-    }
-
-    public void fillEmployees(){
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        try {
-            URL url = new URL("https://my.api.mockaroo.com/usuarios.json?key=15cfd9f0"); // Reemplaza con la URL real
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-
-            InputStream inputStream = connection.getInputStream();
-
-            List<Usuario> UsuariosAdministradores = objectMapper.readValue(inputStream, objectMapper.getTypeFactory().constructCollectionType(List.class, Usuario.class));
-
-            for (Usuario administrador : UsuariosAdministradores) {
-                Administrador aux= ((Administrador)administrador);
-                aux.crearAdministrador();
-                this.saveAdministrador(aux);
-            }
-            connection.disconnect();
-        } catch (IOException e) {
-            System.out.println("ERRROOOOOOOOOOOOOOOOOOOOOOOOOrrrrrrrrr");
-            e.printStackTrace();
-
-        }
-
-    }
-
+    public Administrador updateAdministrador(Administrador administrador){return administradorRepository.save(administrador);}
+    public void deleteAdministrador(Long userId) {administradorRepository.deleteById(Long.valueOf(userId));}
 }

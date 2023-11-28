@@ -13,20 +13,30 @@ import java.util.Date;
 public class Administrador extends Usuario {
     @OneToMany(mappedBy = "admin")
     private ArrayList<Restaurante> restaurantes;
-
     @Column(name = "NUMERO_RESTAURANTES", length = 9)
     private int numero_Restaurantes;
     @Column(name = "ACTIVO_ADMINISTRADOR", columnDefinition = "BOOLEAN")
     private boolean activoAdministrador;
 
     //constructor
-    public Administrador(String nombre, String correo, Date fecha, String contrasena) {
-        super(nombre,correo,fecha,contrasena);
+    public Administrador(){
+
+    }
+
+    public Administrador(String nombre, String correo, String contrasena) {
+        super(nombre,correo,contrasena);
         this.numero_Restaurantes = 0;
         this.restaurantes= new ArrayList<Restaurante>();
     }
 
-
+    @Override
+    public String toString() {
+        return super.toString()+"Administrador{" +
+                "restaurantes=" + restaurantes +
+                ", numero_Restaurantes=" + numero_Restaurantes +
+                ", activoAdministrador=" + activoAdministrador +
+                '}';
+    }
 
     //setters
     public void setNewRestaurante(Restaurante restaurante){

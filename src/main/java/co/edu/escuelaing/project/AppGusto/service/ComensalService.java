@@ -26,7 +26,6 @@ public class ComensalService {
     }
     public void createAdmin(Usuario usuario){
         Comensal comensal = (Comensal)usuario;
-        comensal.crearComensal();
         comensalRepository.save(comensal);
     }
 
@@ -75,7 +74,7 @@ public class ComensalService {
 
             for (Usuario comensal : UsuariosComensales) {
                 Comensal aux= ((Comensal)comensal);
-                aux.crearComensal();
+
                 this.saveComensal(aux);
             }
             connection.disconnect();

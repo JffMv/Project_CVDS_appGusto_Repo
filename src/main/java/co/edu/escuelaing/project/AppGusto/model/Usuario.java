@@ -46,14 +46,28 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String correo, Date fecha, String contrasena) {
+    public Usuario(String nombre, String correo, String contrasena) {
         this.nombre = nombre;
         this.correo = correo;
-        this.fecha = fecha;
+        this.fecha = new Date();
         this.numero_Inicio_de_sesion = 1;
         this.contrasena = contrasena;
         this.activo = true;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "ID_usuario=" + ID_usuario +
+                ", nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                ", fecha=" + fecha +
+                ", numero_Inicio_de_sesion=" + numero_Inicio_de_sesion +
+                ", contrasena='" + contrasena + '\'' +
+                ", activo=" + activo +
+                '}';
+    }
+
     //Methods
 //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -93,7 +107,6 @@ public class Usuario {
 
     //Setters
 
-
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
@@ -116,6 +129,9 @@ public class Usuario {
 
     public void setNumero_Inicio_de_sesion(int numero_Inicio_de_sesion) {
         this.numero_Inicio_de_sesion = numero_Inicio_de_sesion;
+    }
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
 
@@ -143,6 +159,10 @@ public class Usuario {
 
     public int getNumero_Inicio_de_sesion() {
         return numero_Inicio_de_sesion;
+    }
+
+    public String getContrasena() {
+        return contrasena;
     }
 
 }

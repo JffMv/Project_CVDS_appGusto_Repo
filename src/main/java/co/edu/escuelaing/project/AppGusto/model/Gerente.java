@@ -9,19 +9,19 @@ import java.util.Date;
 public class Gerente extends Usuario {
 
     @OneToOne
-    @JoinColumn(name = "ID_RESTAURANTE", referencedColumnName = "ID_RESTAURANTE")
-    private Restaurante ID_restaurante;
+    @JoinColumn(name = "restaurante_id", unique = true)
+    private Restaurante restaurante;
 
-    public Gerente(Restaurante restaurante,String nombre, String correo, Date fecha, String contrasena) {
-        super(nombre, correo, fecha, contrasena);
-        this.ID_restaurante = restaurante;
+    public Gerente(Restaurante restaurante,String nombre, String correo, String contrasena) {
+        super(nombre, correo, contrasena);
+        this.restaurante = restaurante;
     }
 
-    public Restaurante getID_restaurante() {
-        return ID_restaurante;
+    public Restaurante getRestaurante() {
+        return restaurante;
     }
 
-    public void setID_restaurante(Restaurante ID_restaurante) {
-        this.ID_restaurante = ID_restaurante;
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
     }
 }
