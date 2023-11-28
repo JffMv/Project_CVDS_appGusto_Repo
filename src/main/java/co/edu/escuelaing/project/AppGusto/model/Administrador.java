@@ -6,27 +6,22 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Entity
 @Table(name = "ADMINISTRADOR")
 public class Administrador extends Usuario {
-
-    @Column(name = "NUMERO_RESTAURANTES", length = 9)
-    private int numero_Restaurantes;
     @OneToMany(mappedBy = "admin")
     private ArrayList<Restaurante> restaurantes;
 
+    @Column(name = "NUMERO_RESTAURANTES", length = 9)
+    private int numero_Restaurantes;
     @Column(name = "ACTIVO_ADMINISTRADOR", columnDefinition = "BOOLEAN")
     private boolean activoAdministrador;
 
     //constructor
-    public Administrador() {
-
-    }
-
-
-    //methods
-    public void crearAdministrador(){
+    public Administrador(String nombre, String correo, Date fecha, String contrasena) {
+        super(nombre,correo,fecha,contrasena);
         this.numero_Restaurantes = 0;
         this.restaurantes= new ArrayList<Restaurante>();
     }
@@ -34,7 +29,9 @@ public class Administrador extends Usuario {
 
 
     //setters
-
+    public void setNewRestaurante(Restaurante restaurante){
+        this.restaurantes.add(restaurante);
+    }
 
     public void setActivoAdministrador(boolean activeAdministrador) {
         this.activoAdministrador = activeAdministrador;
@@ -46,9 +43,7 @@ public class Administrador extends Usuario {
 
 
     //getters
-
-
-    public boolean isActiveAdministrador() {
+    public boolean isActivoAdministrador() {
         return activoAdministrador;
     }
 

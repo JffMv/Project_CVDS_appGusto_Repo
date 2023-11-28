@@ -3,6 +3,7 @@ package co.edu.escuelaing.project.AppGusto.model;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Entity
 @Table(name = "COMENSAL")
@@ -21,16 +22,8 @@ public class Comensal extends Usuario {
     private Boolean activeComensal;
 
     //constructor
-    public Comensal() {
-    }
-
-    public Comensal(String ID_usuario) {
-        this.numeroPedidos = 0;
-        this.metodosDePago = new ArrayList<MetodoDePago>();
-        this.pedidos = new ArrayList<Pedido>();
-    }
-    //Methods
-    public void crearComensal(){
+    public Comensal(String nombre, String correo, Date fecha, String contrasena){
+        super(nombre,correo,fecha,contrasena);
         this.numeroPedidos = 0;
         this.metodosDePago = new ArrayList<MetodoDePago>();
         this.pedidos = new ArrayList<Pedido>();
@@ -38,9 +31,24 @@ public class Comensal extends Usuario {
     }
 
 
-
     //setters
 
+
+    public void setCarritoDeCompras(ArrayList<Platillo> carritoDeCompras) {
+        this.carritoDeCompras = carritoDeCompras;
+    }
+
+    public void setNumeroPedidos(int numeroPedidos) {
+        this.numeroPedidos = numeroPedidos;
+    }
+
+    public void setMetodosDePago(ArrayList<MetodoDePago> metodosDePago) {
+        this.metodosDePago = metodosDePago;
+    }
+
+    public void setPedidos(ArrayList<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 
     public void setActiveComensal(Boolean activeComensal) {
         this.activeComensal = activeComensal;

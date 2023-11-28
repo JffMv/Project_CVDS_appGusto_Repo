@@ -17,10 +17,11 @@ public class Restaurante {
     @ManyToOne
     @JoinColumn(name="ID_administrador")
     private Administrador admin;
-
-    //?
     @OneToMany(mappedBy = "ID_restaurante")
     private ArrayList<Platillo> platillos;
+    @OneToOne(mappedBy = "restauranteDelGerente")
+    private Gerente gerente;
+
 
     @Column(name = "NOMBRE",length = 50)
     private String nombre;
@@ -50,12 +51,11 @@ public class Restaurante {
         this.verificado = false;
         this.documentos = documentos;
         this.nombre = nombre;
+        this.gerente = null;
     }
 
 
     //setters
-
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -92,9 +92,11 @@ public class Restaurante {
         this.platillos = platillos;
     }
 
+    public void setGerente(Gerente gerente) {
+        this.gerente = gerente;
+    }
+
     //getters
-
-
     public String getNombre() {
         return nombre;
     }
@@ -127,8 +129,11 @@ public class Restaurante {
         return admin;
     }
 
-
     public ArrayList<Platillo> getPlatillos() {
         return platillos;
+    }
+
+    public Gerente getGerente() {
+        return gerente;
     }
 }

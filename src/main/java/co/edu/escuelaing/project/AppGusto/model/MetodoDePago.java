@@ -5,12 +5,14 @@ import java.util.UUID;
 @Entity
 @Table(name = "METADO_DE_PAGO")
 public class MetodoDePago {
-    @ManyToOne
-    @JoinColumn(name =  "ID_comensal")
-    private Comensal comensal;
     @Id
     @Column(name = "ID_METODO_PAGO")
     private String ID_metodoPago;
+
+    @ManyToOne
+    @JoinColumn(name =  "ID_comensal")
+    private Comensal comensal;
+
 
     public MetodoDePago(){
 

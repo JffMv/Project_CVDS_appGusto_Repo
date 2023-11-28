@@ -32,8 +32,10 @@ public class Usuario {
     @Temporal(TemporalType.DATE)
     @Column(name = "FECHA")
     private Date fecha;
+    //?
     @Column(name = "NUMERO_INICIO_DE_SESION", length = 9)
     private int numero_Inicio_de_sesion;
+    //
     @Column(name = "CONTRASENA")
     private String contrasena;
     @Column(name="ACTIVO", columnDefinition = "BOOLEAN")

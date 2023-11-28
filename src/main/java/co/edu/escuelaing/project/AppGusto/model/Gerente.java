@@ -2,6 +2,8 @@ package co.edu.escuelaing.project.AppGusto.model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name="GERENTE")
 public class Gerente extends Usuario {
@@ -10,7 +12,9 @@ public class Gerente extends Usuario {
     @JoinColumn(name = "ID_RESTAURANTE", referencedColumnName = "ID_RESTAURANTE")
     private Restaurante ID_restaurante;
 
-    public Gerente(){
+    public Gerente(Restaurante restaurante,String nombre, String correo, Date fecha, String contrasena) {
+        super(nombre, correo, fecha, contrasena);
+        this.ID_restaurante = restaurante;
     }
 
     public Restaurante getID_restaurante() {

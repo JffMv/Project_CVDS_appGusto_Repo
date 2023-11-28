@@ -26,7 +26,6 @@ public class AdministradorService {
     }
     public void createAdmin(Usuario usuario){
         Administrador admin = (Administrador)usuario;
-        admin.crearAdministrador();
         administradorRepository.save(admin);
     }
 
